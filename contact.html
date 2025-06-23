@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Solvex</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/logo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-logo">
+                        <span>S</span>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-name">Solvex</div>
+                        <div class="brand-subtitle">by Enova Industries</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="dealers.html" class="nav-link">Dealers</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <p class="page-description">
+                Get in touch with our team for expert advice and support
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <h2 class="form-title">Send us a Message</h2>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name" class="form-label">First Name *</label>
+                                <input type="text" id="first-name" name="first_name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name" class="form-label">Last Name *</label>
+                                <input type="text" id="last-name" name="last_name" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select id="subject" name="subject" class="form-input" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="product">Product Information</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="quote">Request Quote</option>
+                                <option value="dealer">Dealer Information</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-full">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-container">
+                    <div class="info-card">
+                        <h3 class="info-title">Contact Information</h3>
+                        <div class="info-items">
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <div class="info-label">Phone</div>
+                                    <div class="info-value">+92 308 1626206</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <div class="info-label">Email</div>
+                                    <div class="info-value">info@solvex.com</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <div class="info-label">Address</div>
+                                    <div class="info-value">
+                                        Enova Industries Ltd.<br>
+                                        Johar Town<br>
+                                        Lahore, Pakistan
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-card">
+                        <h3 class="map-title">Our Location</h3>
+                        <div class="map-placeholder">
+                            <i class="fas fa-map"></i>
+                            <div>Interactive Map</div>
+                            <div class="map-location">Lahore, Pakistan</div>
+                        </div>
+                    </div>
+
+                    <div class="hours-card">
+                        <h3 class="hours-title">Business Hours</h3>
+                        <div class="hours-list">
+                            <div class="hours-item">
+                                <span>Monday - Thursday</span>
+                                <span>9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Saturday</span>
+                                <span>9:00 AM - 3:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Friday</span>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-info">
+                        <div class="brand-logo">
+                            <span>S</span>
+                        </div>
+                        <div class="brand-text">
+                            <div class="brand-name">Solvex</div>
+                            <div class="brand-subtitle">by Enova Industries</div>
+                        </div>
+                    </div>
+                    <p class="brand-description">
+                        Coloring Your Vision with Excellence. Premium quality paints and coatings 
+                        for residential, commercial, and industrial applications.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+92 308 1626206</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lahore, Pakistan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="dealers.html">Dealers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-list">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Solvex by Enova Industries. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery - Solvex</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/logo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-logo">
+                        <span>S</span>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-name">Solvex</div>
+                        <div class="brand-subtitle">by Enova Industries</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="dealers.html" class="nav-link">Dealers</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Project Gallery</h1>
+            <p class="page-description">
+                Explore our portfolio of successful projects across various sectors
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="interior">Interior</button>
+                <button class="filter-btn" data-filter="exterior">Exterior</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Residential Villa">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category interior">Interior</span>
+                        <h3 class="gallery-title">Modern Residential Villa</h3>
+                        <p class="gallery-description">Luxurious interior painting with premium finishes</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="commercial">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Commercial Office Complex">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category commercial">Commercial</span>
+                        <h3 class="gallery-title">Commercial Office Complex</h3>
+                        <p class="gallery-description">Professional office spaces with durable coatings</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Heritage Building Restoration">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category exterior">Exterior</span>
+                        <h3 class="gallery-title">Heritage Building Restoration</h3>
+                        <p class="gallery-description">Weather-resistant exterior painting project</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Apartment Interior">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category interior">Interior</span>
+                        <h3 class="gallery-title">Luxury Apartment Interior</h3>
+                        <p class="gallery-description">Elegant interior design with premium paints</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="commercial">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Industrial Facility">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category commercial">Commercial</span>
+                        <h3 class="gallery-title">Industrial Facility</h3>
+                        <p class="gallery-description">Heavy-duty industrial coating application</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Residential Exterior">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category exterior">Exterior</span>
+                        <h3 class="gallery-title">Residential Exterior</h3>
+                        <p class="gallery-description">Beautiful exterior transformation</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="commercial">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corporate Headquarters">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category commercial">Commercial</span>
+                        <h3 class="gallery-title">Corporate Headquarters</h3>
+                        <p class="gallery-description">Modern corporate interior design</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="interior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Home Interior">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category interior">Interior</span>
+                        <h3 class="gallery-title">Luxury Home Interior</h3>
+                        <p class="gallery-description">High-end residential interior project</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="exterior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coastal Property">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-category exterior">Exterior</span>
+                        <h3 class="gallery-title">Coastal Property</h3>
+                        <p class="gallery-description">Marine-grade exterior coating for coastal properties</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Start Your Project?</h2>
+            <p class="cta-description">
+                Let us help you transform your space with our premium quality paints and expert consultation
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary btn-lg">Get Free Consultation</a>
+                <a href="products.html" class="btn btn-outline btn-lg">View Our Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-info">
+                        <div class="brand-logo">
+                            <span>S</span>
+                        </div>
+                        <div class="brand-text">
+                            <div class="brand-name">Solvex</div>
+                            <div class="brand-subtitle">by Enova Industries</div>
+                        </div>
+                    </div>
+                    <p class="brand-description">
+                        Coloring Your Vision with Excellence. Premium quality paints and coatings 
+                        for residential, commercial, and industrial applications.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, India</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="dealers.html">Dealers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-list">
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Solvex by Enova Industries. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
+</body>
+</html> 

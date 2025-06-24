@@ -15,13 +15,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Get JSON input
 $input = json_decode(file_get_contents('php://input'), true);
 
+// Debug: Log the received data
+error_log('Contact form submission received: ' . print_r($input, true));
+
 // Validate required fields
-$required_fields = ['name', 'email', 'message'];
+$required_fields = ['first_name', 'last_name', 'email', 'subject', 'message'];
 $errors = [];
 
 foreach ($required_fields as $field) {
     if (empty($input[$field])) {
-        $errors[] = ucfirst($field) . ' is required';
+        $errors[] = ucfirst(str_replace('_', ' ', $field)) . ' is required';
     }
 }
 
@@ -41,9 +44,11 @@ if (!empty($errors)) {
 }
 
 // Sanitize input
-$name = htmlspecialchars(trim($input['name']));
+$first_name = htmlspecialchars(trim($input['first_name']));
+$last_name = htmlspecialchars(trim($input['last_name']));
 $email = filter_var(trim($input['email']), FILTER_SANITIZE_EMAIL);
 $phone = !empty($input['phone']) ? htmlspecialchars(trim($input['phone'])) : '';
+$subject = htmlspecialchars(trim($input['subject']));
 $message = htmlspecialchars(trim($input['message']));
 
 // Prepare email content
@@ -60,9 +65,10 @@ $email_body = "
 </head>
 <body>
     <h2>New Contact Form Submission</h2>
-    <p><strong>Name:</strong> $name</p>
+    <p><strong>Name:</strong> $first_name $last_name</p>
     <p><strong>Email:</strong> $email</p>
     " . (!empty($phone) ? "<p><strong>Phone:</strong> $phone</p>" : "") . "
+    <p><strong>Subject:</strong> $subject</p>
     <p><strong>Message:</strong></p>
     <p>" . nl2br($message) . "</p>
     <hr>
@@ -75,7 +81,7 @@ $email_body = "
 $mail_sent = mail($to, $subject, $email_body, $headers);
 
 // Log the submission (optional)
-$log_entry = date('Y-m-d H:i:s') . " - Name: $name, Email: $email, Phone: $phone\n";
+$log_entry = date('Y-m-d H:i:s') . " - Name: $first_name $last_name, Email: $email, Phone: $phone, Subject: $subject\n";
 file_put_contents('contact_log.txt', $log_entry, FILE_APPEND | LOCK_EX);
 
 if ($mail_sent) {

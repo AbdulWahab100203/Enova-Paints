@@ -188,11 +188,12 @@ async function handleDealerForm(form) {
 
 // Form validation
 function validateForm(data) {
-    const requiredFields = ['name', 'email', 'message'];
+    const requiredFields = ['first_name', 'last_name', 'email', 'subject', 'message'];
     
     for (let field of requiredFields) {
         if (!data[field] || data[field].trim() === '') {
-            showToast('Validation Error', `Please fill in the ${field} field.`, 'error');
+            const fieldName = field.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+            showToast('Validation Error', `Please fill in the ${fieldName} field.`, 'error');
             return false;
         }
     }

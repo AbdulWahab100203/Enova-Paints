@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Form Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .debug-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Form Test</h1>
+    <p>This page helps debug form submission issues.</p>
+    
+    <div class="debug-info">
+        <h3>Debug Information</h3>
+        <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+        <p><strong>PHP Files:</strong></p>
+        <ul>
+            <li><a href="debug-form.php" target="_blank">debug-form.php</a> (Test endpoint)</li>
+            <li><a href="process-contact.php" target="_blank">process-contact.php</a> (Main endpoint)</li>
+            <li><a href="test-database.php" target="_blank">test-database.php</a> (Database test)</li>
+        </ul>
+    </div>
+    
+    <form id="debugForm">
+        <div class="form-group">
+            <label for="first-name">First Name *</label>
+            <input type="text" id="first-name" name="first_name" value="Test" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="last-name">Last Name *</label>
+            <input type="text" id="last-name" name="last_name" value="User" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" value="test@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" value="1234567890">
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+                <option value="general">General Inquiry</option>
+                <option value="product">Product Information</option>
+                <option value="technical">Technical Support</option>
+                <option value="quote">Request Quote</option>
+                <option value="dealer">Dealer Information</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="4" required>This is a test message for debugging purposes.</textarea>
+        </div>
+        
+        <button type="submit">Test Debug Form</button>
+    </form>
+    
+    <div id="results"></div>
+    
+    <script>
+        // Show current URL
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        // Test form submission
+        document.getElementById('debugForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="debug-info">Testing form submission...</div>';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Form data:', data);
+            
+            // Test 1: Debug endpoint
+            try {
+                resultsDiv.innerHTML += '<h3>Test 1: Debug Endpoint</h3>';
+                
+                const response1 = await fetch('debug-form.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result1 = await response1.json();
+                console.log('Debug response:', result1);
+                
+                if (result1.success) {
+                    resultsDiv.innerHTML += '<div class="success">✅ Debug endpoint works!</div>';
+                } else {
+                    resultsDiv.innerHTML += '<div class="error">❌ Debug endpoint failed: ' + result1.error + '</div>';
+                }
+                
+                resultsDiv.innerHTML += '<pre>' + JSON.stringify(result1, null, 2) + '</pre>';
+                
+            } catch (error) {
+                resultsDiv.innerHTML += '<div class="error">❌ Debug endpoint error: ' + error.message + '</div>';
+                console.error('Debug error:', error);
+            }
+            
+            // Test 2: Main endpoint
+            try {
+                resultsDiv.innerHTML += '<h3>Test 2: Main Endpoint</h3>';
+                
+                const response2 = await fetch('process-contact.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result2 = await response2.json();
+                console.log('Main response:', result2);
+                
+                if (result2.success) {
+                    resultsDiv.innerHTML += '<div class="success">✅ Main endpoint works!</div>';
+                } else {
+                    resultsDiv.innerHTML += '<div class="error">❌ Main endpoint failed: ' + (result2.error || 'Unknown error') + '</div>';
+                }
+                
+                resultsDiv.innerHTML += '<pre>' + JSON.stringify(result2, null, 2) + '</pre>';
+                
+            } catch (error) {
+                resultsDiv.innerHTML += '<div class="error">❌ Main endpoint error: ' + error.message + '</div>';
+                console.error('Main error:', error);
+            }
+        });
+        
+        // Test database connection
+        async function testDatabase() {
+            try {
+                const response = await fetch('test-database.php');
+                const html = await response.text();
+                console.log('Database test response:', html);
+            } catch (error) {
+                console.error('Database test error:', error);
+            }
+        }
+        
+        // Run database test on page load
+        testDatabase();
+    </script>
+</body>
+</html> 

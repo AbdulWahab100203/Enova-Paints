@@ -103,6 +103,8 @@ async function handleContactForm(form) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     
+    console.log('Form data being sent:', data); // Debug log
+    
     // Validate form
     if (!validateForm(data)) {
         return;
@@ -115,6 +117,8 @@ async function handleContactForm(form) {
     submitBtn.disabled = true;
 
     try {
+        console.log('Sending request to process-contact.php...'); // Debug log
+        
         const response = await fetch('process-contact.php', {
             method: 'POST',
             headers: {
@@ -123,7 +127,16 @@ async function handleContactForm(form) {
             body: JSON.stringify(data)
         });
 
+        console.log('Response status:', response.status); // Debug log
+        console.log('Response headers:', response.headers); // Debug log
+
+        // Check if response is ok
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
+        console.log('Response data:', result); // Debug log
 
         if (result.success) {
             // Reset form
@@ -131,10 +144,21 @@ async function handleContactForm(form) {
             showToast('Message Sent!', result.message, 'success');
         } else {
             showToast('Error', result.error || 'Failed to send message', 'error');
+            console.error('Server returned error:', result); // Debug log
         }
     } catch (error) {
-        console.error('Error:', error);
-        showToast('Error', 'Failed to send message. Please try again.', 'error');
+        console.error('Error details:', error); // Debug log
+        console.error('Error stack:', error.stack); // Debug log
+        
+        let errorMessage = 'Failed to send message. Please try again.';
+        
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            errorMessage = 'Network error. Please check your internet connection.';
+        } else if (error.message.includes('HTTP error')) {
+            errorMessage = 'Server error. Please try again later.';
+        }
+        
+        showToast('Error', errorMessage, 'error');
     } finally {
         // Reset button
         submitBtn.textContent = originalText;
@@ -146,6 +170,8 @@ async function handleContactForm(form) {
 async function handleDealerForm(form) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
+    
+    console.log('Dealer form data being sent:', data); // Debug log
     
     // Validate form
     if (!validateDealerForm(data)) {
@@ -159,6 +185,8 @@ async function handleDealerForm(form) {
     submitBtn.disabled = true;
 
     try {
+        console.log('Sending dealer request to process-dealer.php...'); // Debug log
+        
         const response = await fetch('process-dealer.php', {
             method: 'POST',
             headers: {
@@ -167,7 +195,16 @@ async function handleDealerForm(form) {
             body: JSON.stringify(data)
         });
 
+        console.log('Dealer response status:', response.status); // Debug log
+        console.log('Dealer response headers:', response.headers); // Debug log
+
+        // Check if response is ok
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
+        console.log('Dealer response data:', result); // Debug log
 
         if (result.success) {
             // Reset form
@@ -175,10 +212,21 @@ async function handleDealerForm(form) {
             showToast('Application Submitted!', result.message, 'success');
         } else {
             showToast('Error', result.error || 'Failed to submit application', 'error');
+            console.error('Server returned dealer error:', result); // Debug log
         }
     } catch (error) {
-        console.error('Error:', error);
-        showToast('Error', 'Failed to submit application. Please try again.', 'error');
+        console.error('Dealer error details:', error); // Debug log
+        console.error('Dealer error stack:', error.stack); // Debug log
+        
+        let errorMessage = 'Failed to submit application. Please try again.';
+        
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            errorMessage = 'Network error. Please check your internet connection.';
+        } else if (error.message.includes('HTTP error')) {
+            errorMessage = 'Server error. Please try again later.';
+        }
+        
+        showToast('Error', errorMessage, 'error');
     } finally {
         // Reset button
         submitBtn.textContent = originalText;
